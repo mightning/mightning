@@ -39,7 +39,7 @@ result = [process_line(line) for line in lines]
 result.pop()
 
 
-#pracovni promenne: list a set
+#working variables: list and set
 just_one_list = []
 for x in result:
     just_one_list.extend(x)
@@ -47,17 +47,16 @@ for x in result:
 just_one_set = set(just_one_list)
 
 
-#VYSLEDKY:
+#RESULTS:
 
-# ci pocet vsetkych klauzul a premennych sedi s cislom uvedenym v prvom riadku.
+# Does the number of clausules and variables match the figures in the first line?
 print(f'Pocet klauzul je: {len(result)}')
 print(f'Pocet promennych je: {int(len(just_one_set)/2)}')
-#oboje sedi (pocet klauzul je 90, jsou tam kladne i zaporne)
 
-#pouze kladne nebo zaporne promenne:
+# Is there a variable that has only positive or only negative value?
 without_opposite = [x for x in just_one_set if -x not in just_one_set]
 
-#takisto mozes skontrolovat ci vsetky klauzuly maju aspon dva literaly
+# Do all the clausules contain at least two variables?
 less_than_two = [x for x in result if len(x) < 2]
 
 if not less_than_two:
@@ -66,7 +65,7 @@ if not less_than_two:
 else:
     print(f'Tyto klauzuly maji mene nez dva literaly: {less_than_two}')
 
-#a ci sa v nejakej klauzule nevyskytuje jedna premenna viackrat (znamienka pri tomto ignoruj)
+# Does any clausule contain a certain variable more than once?
 
 test_result = result
 
